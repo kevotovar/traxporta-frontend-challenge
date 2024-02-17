@@ -1,4 +1,4 @@
-export interface Users {
+export interface User {
   id: number
   name: string
   username: string
@@ -28,7 +28,7 @@ export interface Company {
   bs: string
 }
 
-export async function fetchUsers(): Promise<Users[]> {
+export async function fetchUsers(): Promise<User[]> {
   const res = await fetch('https://jsonplaceholder.typicode.com/users')
   return await res.json()
 }
