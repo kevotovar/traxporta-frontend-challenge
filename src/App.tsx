@@ -13,7 +13,7 @@ function App() {
   if (query.isLoading) return <p>Loading...</p>
   if (query.isError) return <p>Error</p>
   return (
-    <main className="mt-4 max-w-2xl mx-auto flex flex-col justify-center pt-10 border-[1px] border-gray-300 bg-white rounded-xl">
+    <main className="my-4 max-w-2xl mx-auto flex flex-col justify-center pt-10 border-[1px] border-gray-300 bg-white rounded-xl">
       <h1 className="text-3xl font-bold text-center mb-4">Users</h1>
       <Search
         users={query.data ?? []}
