@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useQuery } from 'react-query'
 import { User, fetchUsers } from './services/placeholder'
 import Search from './components/Search'
+import UserList from './components/UserList'
 
 function App() {
   const query = useQuery('fetch', fetchUsers)
@@ -12,23 +13,15 @@ function App() {
   if (query.isLoading) return <p>Loading...</p>
   if (query.isError) return <p>Error</p>
   return (
-    <div>
+    <main className="mt-4 max-w-2xl mx-auto flex flex-col justify-center pt-10 border-[1px] border-gray-300 bg-white rounded-xl">
+      <h1 className="text-3xl font-bold text-center mb-4">Users</h1>
       <Search
         users={query.data ?? []}
         onSelect={(user) => setSelectedUser(user)}
         selectedItem={selectedUser}
       />
-      {users.map((user) => (
-        <div key={user.email}>
-          <img
-            src={`https://i.pravatar.cc/150?u=${user.email}`}
-            alt={user.name}
-          />
-          <p>{user.name}</p>
-          <p>{user.email}</p>
-        </div>
-      ))}
-    </div>
+      <UserList users={users} />
+    </main>
   )
 }
 

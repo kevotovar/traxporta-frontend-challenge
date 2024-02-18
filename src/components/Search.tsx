@@ -41,12 +41,13 @@ export default function Search({ users, onSelect, selectedItem }: SearchProps) {
   })
 
   return (
-    <div>
-      <div className="w-72 flex flex-col gap-1">
-        <div className="flex shadow-sm bg-white gap-0.5">
+    <div className="flex justify-center relative">
+      <div className="w-[400px] flex flex-col gap-1">
+        <div className="flex p-2 bg-white gap-0.5 border-[1px] border-gray-300 rounded-full focus:outline-none focus:border-blue-500 transition duration-200 ease-in-out overflow-hidden font-light">
           <input
             placeholder="Search users"
             className="w-full p-1.5"
+            type="search"
             {...getInputProps()}
           />
           {selectedItem && (
@@ -73,7 +74,7 @@ export default function Search({ users, onSelect, selectedItem }: SearchProps) {
         </div>
       </div>
       <ul
-        className={`absolute w-72 bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 ${
+        className={`absolute w-72 bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 top-[56px] ${
           !(isOpen && items.length) && 'hidden'
         }`}
         {...getMenuProps()}
