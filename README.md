@@ -2,7 +2,7 @@
 
 This is a code challenge for Traxporta
 
-Currently, two official plugins are available:
+https://traxporta-frontend-challenge.vercel.app/ URL to see the project
 
 ## Prerequisites
 
