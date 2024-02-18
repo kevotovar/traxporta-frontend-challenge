@@ -72,29 +72,29 @@ export default function Search({ users, onSelect, selectedItem }: SearchProps) {
             {isOpen ? <>&#8593;</> : <>&#8595;</>}
           </button>
         </div>
+        <ul
+          className={`absolute w-72 bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 top-[56px] ${
+            !(isOpen && items.length) && 'hidden'
+          }`}
+          {...getMenuProps()}
+        >
+          {isOpen &&
+            items.map((item: User, index: number) => (
+              <li
+                className={clsx(
+                  highlightedIndex === index && 'bg-blue-300',
+                  selectedItem === item && 'font-bold',
+                  'py-2 px-3 shadow-sm flex flex-col'
+                )}
+                key={item.id}
+                {...getItemProps({ item, index })}
+              >
+                <span>{item.name}</span>
+                <span className="text-sm text-gray-700">{item.email}</span>
+              </li>
+            ))}
+        </ul>
       </div>
-      <ul
-        className={`absolute w-72 bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 top-[56px] ${
-          !(isOpen && items.length) && 'hidden'
-        }`}
-        {...getMenuProps()}
-      >
-        {isOpen &&
-          items.map((item: User, index: number) => (
-            <li
-              className={clsx(
-                highlightedIndex === index && 'bg-blue-300',
-                selectedItem === item && 'font-bold',
-                'py-2 px-3 shadow-sm flex flex-col'
-              )}
-              key={item.id}
-              {...getItemProps({ item, index })}
-            >
-              <span>{item.name}</span>
-              <span className="text-sm text-gray-700">{item.email}</span>
-            </li>
-          ))}
-      </ul>
     </div>
   )
 }
