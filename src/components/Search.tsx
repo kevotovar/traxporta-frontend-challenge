@@ -2,19 +2,12 @@ import { useState } from 'react'
 import { useCombobox } from 'downshift'
 import clsx from 'clsx'
 import { User } from '../services/placeholder'
+import { filterUsers } from './utils'
 
 export interface SearchProps {
   users: User[]
   onSelect: (user?: User) => void
   selectedItem?: User
-}
-
-function filterUsers(users: User[], inputValue: string) {
-  return users.filter(
-    (user) =>
-      user.name.toLowerCase().startsWith(inputValue.toLowerCase()) ||
-      user.email.toLowerCase().startsWith(inputValue.toLowerCase())
-  )
 }
 
 export default function Search({ users, onSelect, selectedItem }: SearchProps) {
